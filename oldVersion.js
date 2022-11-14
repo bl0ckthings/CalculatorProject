@@ -13,6 +13,7 @@ let isFirstNumber = false;
 let secondNumber = "";
 let isSecondNumber = false;
 let sign = "";
+let secondSign = "";
 let resultNumber = 0;
 
 
@@ -78,7 +79,8 @@ function getSign() {
         signs[i].addEventListener('click', (e) => {
             sign = e.target.getAttribute('value');
             isFirstNumber = true;
-            console.log(sign);
+
+
 
         })
     }
@@ -91,13 +93,20 @@ getSign();
 
 
 equals.addEventListener('click', () => {
+    if (sign != "" && secondSign === '') {
+        secondSign = sign;
+        resultNumber = operate(sign, firstNumber, secondNumber);
+        result.textContent = resultNumber;
+        firstNumber = resultNumber;
+        secondNumber = '';
+        if (secondNumber == '') {
+            result.textContent = firstNumber;
+        }
+    } else if (sign != "" && secondSign != '') {
+        secondSign = sign;
+        resultNumber = operate(secondSign, firstNumber, secondNumber);
 
-    resultNumber = operate(sign, firstNumber, secondNumber);
-    result.textContent = resultNumber;
-    firstNumber = resultNumber;
-    secondNumber = '';
-    if (secondNumber == '') {
-        result.textContent = firstNumber;
+        result.textContent = resultNumber;
     }
 
 
