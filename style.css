@@ -26,9 +26,10 @@ body {
 /*  Result -Container  */
 
 .container {
+    margin-left: 400px;
     display: flex;
-    border: 1px solid white;
-    justify-content: center;
+    /* border: 1px solid white; */
+    justify-content: center
 }
 
 /* RESULT */
