@@ -59,10 +59,12 @@ function getFirstValue(first) {
 
 // Pareil pour la seconde valeur (qui va après un signe (addition, soustraction etc..))
 function getSecondValue(second) {
-    if (displayValue == firstNumber) {
-        displayValue = second;
-    } else {
-        displayValue += second;
+    if (firstOperator != '') {
+        if (displayValue == firstNumber) {
+            displayValue = second;
+        } else {
+            displayValue += second;
+        }
     }
 
 }
@@ -76,14 +78,14 @@ for (let i = 0; i < signs.length; i++) {
     signs[i].addEventListener('click', () => {
         getSolution(signs[i].value);
         updateDisplay();
-
+        console.log(signs[i].value)
     })
 }
 
 // La fonction la plus importante ! 
 function getSolution(sign) {
     if (firstOperator != "" && secondOperator === '') {
-        firstOperator = sign; // le signe qui sera selectionné est stocké dans cette var
+        secondOperator = sign; // le signe qui sera selectionné est stocké dans cette var
         secondNumber = displayValue; // Je veux que mon second nombre soit affiché avant mon calcul
         resultNumber = operate(firstOperator, Number(firstNumber), Number(secondNumber)); // Mon calcul
         displayValue = resultNumber; // Mon résultat du calcul ci dessus affiché.
@@ -94,9 +96,9 @@ function getSolution(sign) {
 
     } else if (firstOperator == '' && secondOperator != "") {
         // Grosso modo la même chose mais pour la seconde opération enchainée. Une fois celle ci effectuée , l'explication du dessus se répète.
+        secondOperator = sign;
         secondNumber = displayValue;
         resultNumber = operate(secondOperator, Number(firstNumber), Number(secondNumber));
-        secondOperator = sign;
         displayValue = resultNumber;
         firstNumber = displayValue;
         resultNumber = "";
@@ -118,6 +120,14 @@ function equal() {
     if (firstOperator == '') {
         displayValue = displayValue;
 
+    } else if (secondNumber != '') {
+        secondNumber = displayValue;
+        resultNumber = operate(secondOperator, Number(firstNumber), Number(secondNumber));
+        displayValue = resultNumber;
+        firstNumber = displayValue;
+        secondNumber = "";
+        firstOperator = "";
+        resultNumber = "";
     } else {
         secondNumber = displayValue;
         displayValue = operate(firstOperator, Number(firstNumber), Number(secondNumber));
