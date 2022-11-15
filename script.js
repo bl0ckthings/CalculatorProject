@@ -78,7 +78,7 @@ for (let i = 0; i < signs.length; i++) {
     signs[i].addEventListener('click', () => {
         getSolution(signs[i].value);
         updateDisplay();
-        console.log(signs[i].value)
+
     })
 }
 
@@ -87,18 +87,19 @@ function getSolution(sign) {
     if (firstOperator != "" && secondOperator === '') {
         secondOperator = sign; // le signe qui sera selectionné est stocké dans cette var
         secondNumber = displayValue; // Je veux que mon second nombre soit affiché avant mon calcul
-        resultNumber = operate(firstOperator, Number(firstNumber), Number(secondNumber)); // Mon calcul
+        resultNumber = operate(Number(firstNumber), Number(secondNumber), firstOperator); // Mon calcul
         displayValue = resultNumber; // Mon résultat du calcul ci dessus affiché.
         firstNumber = displayValue; // C'est ici que tout ce joue :
         // Je redéfinis ma variable qui stockait mon résultat du calcul en tant que premier nombre
         // pour pouvoir répeter l'opération sans forcément créer une variable 3eme nombre, 4eme nombre etc etc ...
         resultNumber = ""; // Je remet à 0 mon résultat final car c'est à présent mon premier nombre :)
 
-    } else if (firstOperator == '' && secondOperator != "") {
+    } else if (firstOperator !== '' && secondOperator != "") {
         // Grosso modo la même chose mais pour la seconde opération enchainée. Une fois celle ci effectuée , l'explication du dessus se répète.
-        secondOperator = sign;
+
         secondNumber = displayValue;
-        resultNumber = operate(secondOperator, Number(firstNumber), Number(secondNumber));
+        resultNumber = operate(Number(firstNumber), Number(secondNumber), secondOperator);
+        secondOperator = sign;
         displayValue = resultNumber;
         firstNumber = displayValue;
         resultNumber = "";
@@ -122,7 +123,7 @@ function equal() {
 
     } else if (secondNumber != '') {
         secondNumber = displayValue;
-        resultNumber = operate(secondOperator, Number(firstNumber), Number(secondNumber));
+        resultNumber = operate(Number(firstNumber), Number(secondNumber), secondOperator);
         displayValue = resultNumber;
         firstNumber = displayValue;
         secondNumber = "";
@@ -130,7 +131,7 @@ function equal() {
         resultNumber = "";
     } else {
         secondNumber = displayValue;
-        displayValue = operate(firstOperator, Number(firstNumber), Number(secondNumber));
+        displayValue = operate(Number(firstNumber), Number(secondNumber), firstOperator);
         firstNumber = displayValue;
         secondNumber = "";
         firstOperator = "";
@@ -154,31 +155,38 @@ clear.addEventListener('click', () => {
 });
 
 function clearDisplay() {
-    displayValue = 0;
+    displayValue = '0';
 
     firstNumber = "";
     secondNumber = "";
-    firstSign = "";
-    secondSign = "";
-    resultNumber = 0;
+    firstOperator = "";
+    secondOperator = "";
+    resultNumber = "";
 }
 
 // Operator functions -----------
 
-function operate(operator, a, b) {
-    if (operator == "+") {
+function operate(a, b, operator) {
+    if (operator === "+") {
         return a + b;
     }
-    if (operator == '-') {
+    else if (operator === '-') {
         return a - b;
     }
 
-    if (operator == 'x') {
+    else if (operator === 'x') {
         return a * b;
     }
 
-    if (operator == "/") {
-        return a / b;
+    else if (operator === "/") {
+        if (b === 0) {
+            return 'no bro'
+        } else {
+
+            return a / b;
+        }
+
+
     }
 
 }
