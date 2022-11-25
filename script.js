@@ -3,6 +3,10 @@ const result = document.querySelector('.result span');
 const clear = document.querySelector('.clear1');
 const signs = document.querySelectorAll('.operator');
 const equals = document.querySelector('.equal');
+const dot = document.querySelector('.dot');
+
+
+
 
 
 let displayValue = "0";
@@ -17,6 +21,7 @@ let resultNumber = 0;
 // Cette fonction me sert à mettre à jour ma valeur d'affichage, j'ai juste à l'appeler pour update
 function updateDisplay() {
     result.textContent = displayValue;
+    console.log(displayValue);
 
 }
 updateDisplay();
@@ -29,6 +34,8 @@ for (let i = 0; i < numbers.length; i++) {
         if (firstNumber == "") {
             getFirstValue(atr)
             updateDisplay();
+
+
         } else {
             getSecondValue(atr);
             updateDisplay();
@@ -190,3 +197,5 @@ function operate(a, b, operator) {
     }
 
 }
+
+

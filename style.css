@@ -68,7 +68,7 @@ body {
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-    border: 3px solid white;
+    /* border: 3px solid white; */
     padding: 2px;
 }
 
@@ -152,7 +152,7 @@ body {
 
 .item.numbers.zero {
     grid-area: 5 / 1 / 6 / 2;
-    padding: 18px;
+    padding: 20%;
 }
 
 .item.dot {
