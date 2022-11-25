@@ -1,177 +1,172 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: 0;
-}
+ * {
+     padding: 0px;
+     margin: 0px;
+     box-sizing: 0;
+ }
 
-html,
-body {
-    min-height: 100% !important;
-    height: 100%;
-    background-color: black;
-    font-family: 'Roboto', sans-serif;
-}
+ html {
+     text-align: center;
+     font-family: monospace;
+ }
 
-.title {
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 50px;
-}
+ .title {
+     background-color: #92AECF;
+     font-size: 5.5Em;
+     font-family: 'Syne Mono', monospace;
 
+ }
 
-
-
-
-/*  Result -Container  */
-
-.container {
-    margin-left: 400px;
-    display: flex;
-    /* border: 1px solid white; */
-    justify-content: center
-}
-
-/* RESULT */
-.result {
-    height: 37%;
-    color: white;
-    text-align: center;
-
-}
-
-.result span {
-
-    margin-top: 80px;
-    font-size: 100px;
-}
-
-/* ------------------------- */
+ .container {
+     display: flex;
+     min-height: 95vh;
+     height: 70vh;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+     background-color: #92AECF;
+ }
 
 
-/* BTN CONTAINER */
-
-.btn-container {
-    display: flex;
-    justify-content: space-evenly;
-    height: 50%;
-
-}
-
-.buttons {
-    width: 30%;
-
-    display: grid;
-    justify-content: center;
-
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    /* border: 3px solid white; */
-    padding: 2px;
-}
+ .btn-container {
+     display: grid;
+     grid-template-columns: repeat(4, 90px);
+     grid-template-rows: repeat(6, 70px);
+     gap: 2px;
+     border: 7px solid #4B4453;
+     border-radius: 5px;
+     text-shadow: 1px 2px 1px #000000;
+     background-color: black;
+     ;
+ }
 
 
 
-.item {
-    text-align: center;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 160%;
-    background-color: grey;
-}
 
-.item:hover {
-    background-color: rgb(170, 169, 169)
-}
+ .result {
+     grid-area: 1 / 1 / 2 / 5;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: flex-end;
+     background-color: #D5CABD;
+     font-weight: bold;
+     font-size: 5.5em;
+     border: 5px solid black;
+     padding: 5px;
+ }
 
+ button {
+     border: none;
+     border-radius: 5%;
+     font-family: monospace;
+     font-weight: initial;
+     font-size: 2em;
 
-/* GRID SETTINGS */
-.item.clear1 {
-    grid-area: 1 / 1 / 2 / 4;
-    background-color: lightgray;
-}
+ }
 
-.item.clear1:hover {
-    background-color: white;
-}
-
-.item.operator.divide {
-    grid-area: 1 / 4 / 2 / 5;
-}
-
-.item.numbers.seven {
-    grid-area: 2 / 1 / 3 / 2;
-}
-
-.item.numbers.eight {
-    grid-area: 2 / 2 / 3 / 3;
-}
-
-.item.numbers.nine {
-    grid-area: 2 / 3 / 3 / 4;
-}
-
-.item.operator.multiply {
-    grid-area: 2 / 4 / 3 / 5;
-}
-
-.item.numbers.four {
-    grid-area: 3 / 1 / 4 / 2;
-}
-
-.item.numbers.five {
-    grid-area: 3 / 2 / 4 / 3;
-}
-
-.item.numbers.six {
-    grid-area: 3 / 3 / 4 / 4;
-}
-
-.item.operator.sub {
-    grid-area: 3 / 4 / 4 / 5;
-}
-
-.item.numbers.one {
-    grid-area: 4 / 1 / 5 / 2;
-}
-
-.item.numbers.two {
-    grid-area: 4 / 2 / 5 / 3;
-}
-
-.item.numbers.three {
-    grid-area: 4 / 3 / 5 / 4;
-}
-
-.item.operator.add {
-    grid-area: 4 / 4 / 5 / 5;
-}
+ .item {
+     cursor: pointer;
+ }
 
 
-.item.numbers.zero {
-    grid-area: 5 / 1 / 6 / 2;
-    padding: 20%;
-}
+ /* COLORS */
+ .numbers {
+     background-color: #768291
+ }
 
-.item.dot {
-    grid-area: 5 / 2 / 6 / 3;
-}
-
-.item.equal {
-    grid-area: 5 / 3 / 6 / 5;
+ .numbers:hover {
+     background-color: rgba(237, 237, 241, 0.685)
+ }
 
 
-}
+ .operator {
+     background-color: #E19E20;
+ }
 
-/* ------------------------- */
+ .operator:hover {
+     background-color: #d6ac5e;
+ }
 
-/* Signs style */
-.item.operator {
-    background-color: #fcc368;
-}
+ .clear1:hover {
+     background-color: #fda0b9d3;
+ }
 
-.item.operator:hover {
-    background-color: white;
-}
+
+ /* GRID SETTINGS */
+ .clear1 {
+     grid-area: 2 / 1 / 3 / 4;
+     background-color: #fa4374d3;
+ }
+
+ .divide {
+     grid-area: 2 / 4 / 3 / 5;
+
+ }
+
+ .seven {
+     grid-area: 3 / 1 / 4 / 2;
+ }
+
+ .eight {
+     grid-area: 3 / 2 / 4 / 3;
+ }
+
+ .nine {
+     grid-area: 3 / 3 / 4 / 4;
+ }
+
+ .multiply {
+     grid-area: 3 / 4 / 4 / 5;
+
+ }
+
+ .four {
+     grid-area: 4 / 1 / 5 / 2;
+ }
+
+ .five {
+     grid-area: 4 / 2 / 5 / 3;
+ }
+
+ .six {
+     grid-area: 4 / 3 / 5 / 4;
+ }
+
+ .sub {
+     grid-area: 4 / 4 / 5 / 5;
+
+ }
+
+ .one {
+     grid-area: 5 / 1 / 6 / 2;
+ }
+
+ .two {
+     grid-area: 5 / 2 / 6 / 3;
+ }
+
+ .three {
+     grid-area: 5 / 3 / 6 / 4;
+ }
+
+ .add {
+     grid-area: 5 / 4 / 6 / 5;
+
+ }
+
+ .zero {
+     grid-area: 6 / 1 / 7 / 2;
+ }
+
+ .dot {
+     grid-area: 6 / 2 / 7 / 3;
+ }
+
+ .equal {
+     grid-area: 6 / 3 / 7 / 5;
+     background-color: #7FD1AE;
+ }
+
+ .equal:hover {
+     background-color: lightgreen;
+ }

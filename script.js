@@ -21,7 +21,9 @@ let resultNumber = 0;
 // Cette fonction me sert à mettre à jour ma valeur d'affichage, j'ai juste à l'appeler pour update
 function updateDisplay() {
     result.textContent = displayValue;
-    console.log(displayValue);
+    if (displayValue.length > 9) {
+        result.textContent = displayValue.substring(0, 9);
+    }
 
 }
 updateDisplay();
@@ -34,8 +36,6 @@ for (let i = 0; i < numbers.length; i++) {
         if (firstNumber == "") {
             getFirstValue(atr)
             updateDisplay();
-
-
         } else {
             getSecondValue(atr);
             updateDisplay();
@@ -154,6 +154,9 @@ function equal() {
 
 
 
+
+
+
 //  CLEAR BUTTON ---------------------------------
 clear.addEventListener('click', () => {
     clearDisplay();
@@ -197,5 +200,4 @@ function operate(a, b, operator) {
     }
 
 }
-
 
