@@ -24,6 +24,15 @@ function updateDisplay() {
     if (displayValue.length > 9) {
         result.textContent = displayValue.substring(0, 9);
     }
+    if (displayValue.includes('.') == true) {
+
+
+        dot.disabled = true;
+    } else {
+        dot.disabled = false;
+    }
+
+
 
 }
 updateDisplay();
@@ -36,9 +45,11 @@ for (let i = 0; i < numbers.length; i++) {
         if (firstNumber == "") {
             getFirstValue(atr)
             updateDisplay();
+
         } else {
             getSecondValue(atr);
             updateDisplay();
+
 
         }
 
@@ -147,10 +158,6 @@ function equal() {
     }
 
 }
-
-
-
-
 
 
 
