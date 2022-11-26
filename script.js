@@ -106,7 +106,7 @@ function getSolution(sign) {
         secondOperator = sign; // le signe qui sera selectionné est stocké dans cette var
         secondNumber = displayValue; // Je veux que mon second nombre soit affiché avant mon calcul
         resultNumber = operate(Number(firstNumber), Number(secondNumber), firstOperator); // Mon calcul
-        displayValue = resultNumber; // Mon résultat du calcul ci dessus affiché.
+        displayValue = round(resultNumber, 7); // Mon résultat du calcul ci dessus affiché.
         firstNumber = displayValue; // C'est ici que tout ce joue :
         // Je redéfinis ma variable qui stockait mon résultat du calcul en tant que premier nombre
         // pour pouvoir répeter l'opération sans forcément créer une variable 3eme nombre, 4eme nombre etc etc ...
@@ -118,7 +118,7 @@ function getSolution(sign) {
         secondNumber = displayValue;
         resultNumber = operate(Number(firstNumber), Number(secondNumber), secondOperator);
         secondOperator = sign;
-        displayValue = resultNumber;
+        displayValue = round(resultNumber, 7);
         firstNumber = displayValue;
         resultNumber = "";
 
@@ -141,7 +141,7 @@ function equal() {
 
     } else if (secondNumber != '') {
         secondNumber = displayValue;
-        resultNumber = operate(Number(firstNumber), Number(secondNumber), secondOperator);
+        resultNumber = round(operate(Number(firstNumber), Number(secondNumber), secondOperator), 7);
         displayValue = resultNumber;
         firstNumber = displayValue;
         secondNumber = "";
@@ -149,7 +149,7 @@ function equal() {
         resultNumber = "";
     } else {
         secondNumber = displayValue;
-        displayValue = operate(Number(firstNumber), Number(secondNumber), firstOperator);
+        displayValue = round(operate(Number(firstNumber), Number(secondNumber), firstOperator), 7);
         firstNumber = displayValue;
         secondNumber = "";
         firstOperator = "";
@@ -161,8 +161,11 @@ function equal() {
 
 
 
+// ROUND FUNCTION
 
-
+function round(number, decimals) {
+    return Number(Math.round(number + 'e' + decimals) + 'e-' + decimals);
+}
 
 //  CLEAR BUTTON ---------------------------------
 clear.addEventListener('click', () => {
